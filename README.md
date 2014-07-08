@@ -1,6 +1,8 @@
 amm_jenkins_cookbooks
 ======================
 
+**This repository is a work in progress and should not be used at this point**
+
 A collection of cookbooks and configuration used to set up a Jenkins server for the Honolulu application. You can point to this repo with OpsWorks if you want to create a custom Jenkins layer.
 
 Most of these cookbooks are just copies of open source cookbooks. They were retrieved using berkshelf, since it makes everything way easier. If you need to update the open source cookbooks, it's simple enough; just add the new dependency to Berksfile, and then run these commands:
