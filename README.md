@@ -1,4 +1,4 @@
-honolulu_jenkins_cookbooks
+amm_jenkins_cookbooks
 ======================
 
 A collection of cookbooks and configuration used to set up a Jenkins server for the Honolulu application. You can point to this repo with OpsWorks if you want to create a custom Jenkins layer.
