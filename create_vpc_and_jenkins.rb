@@ -50,7 +50,7 @@ end
 def create_vpc_stack opts
   # create a cfn stack with all the resources the opsworks stack will need
   @cfn = Aws::CloudFormation.new 
-  cfn_stack_name = "HonoluluAnswers-VPC-#{@timestamp}"
+  cfn_stack_name = "Amazon-Media-Manager-VPC-#{@timestamp}"
   @cfn.create_stack stack_name: cfn_stack_name, template_body: File.open("vpc.template", "rb").read, disable_rollback: true, timeout_in_minutes: 20, parameters: [
       { parameter_key: "KeyName",    parameter_value: opts[:keyname] }
     ]
@@ -77,7 +77,7 @@ def create_jenkins_stack opts, resources
   privateSubnetA = resources["PrivateSubnetA"]
   privateSubnetB = resources["PrivateSubnetB"]
 
-  cfn_stack_name = "HonoluluAnswers-Jenkins-#{@timestamp}"
+  cfn_stack_name = "Amazon-Media-Manager-Jenkins-#{@timestamp}"
   @cfn.create_stack stack_name: cfn_stack_name, template_body: File.open("jenkins.template", "rb").read, timeout_in_minutes: 45, disable_rollback: true, capabilities: ["CAPABILITY_IAM"], parameters: [
       { parameter_key: "domain",            parameter_value: opts[:domain]  },
       { parameter_key: "adminEmailAddress", parameter_value: opts[:email]   },
@@ -102,7 +102,7 @@ opts = Trollop::options do
   opt :domain, 'The Route 53 Hosted Zone that the Jenkins server will deploy to', :type => String, :default => "example.com"
 end
 
-puts "You're creating a Honolulu Answers VPC and Jenkins instance in the #{opts[:region]} region."
+puts "You're creating a Amazon Media Manager VPC and Jenkins instance in the #{opts[:region]} region."
 @timestamp = Time.now.strftime "%Y%m%d%H%M%S"
 
 aws_region = opts[:region]

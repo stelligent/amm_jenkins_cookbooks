@@ -4,8 +4,8 @@
     "Parameters": {
         "repository": {
             "Type": "String",
-            "Default": "https://github.com/stelligent/honolulu_answers.git",
-            "Description": "The github repository where you code is stored. Note: this repoistory must be public."
+            "Default": "https://github.com/stelligent/amediamanager.git",
+            "Description": "The github repository where you code is stored. Note: this repository must be public."
         },
         "branch": {
             "Type": "String",
@@ -323,7 +323,7 @@
                 "UseCustomCookbooks": true,
                 "CustomCookbooksSource": {
                     "Type": "git",
-                    "Url": "https://github.com/stelligent/honolulu_jenkins_cookbooks.git"
+                    "Url": "https://github.com/stelligent/amm_jenkins_cookbooks.git"
                 }
             }
         },
