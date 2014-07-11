@@ -50,7 +50,7 @@ The parameters for those templates are as follows:
 
 * **region**: The AWS region you want to run everything in.
 * **keyname**: the name of an EC2 keypair that exists in that region. It will be linked to the NAT and Bastion host boxes that the VPC template creates.
-* **vpc**, **publicSubnet**, **privateSubnetA**, and **privateSubnetB** are outputs from the VPC template and must be inputted into the Jenkins template, so it knows where to build the instance and load balancer. It also saves this information for building Honolulu Answers application servers.
+* **vpc**, **publicSubnet**, **privateSubnetA**, and **privateSubnetB** are outputs from the VPC template and must be inputted into the Jenkins template, so it knows where to build the instance and load balancer.
 
 The Jenkins template also supports two other optional parameters: _repository_ and _branch_. If you'd like to specify a github repository other than the AMM app, you can pass in a parameter. The URL must be a github repository, and it must be a public repo. You can also specify a branch if you need one.
 
