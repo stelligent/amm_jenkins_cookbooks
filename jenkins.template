@@ -84,7 +84,13 @@
                             "create-new-jenkins",
                             "job-seed"
                         ],
-                        "global_vars": {
+                        "global_vars": {                                                   
+                            "AWS_ACCESS_KEY_ID": {
+                                "Ref": "HostKeys"
+                            },
+                            "AWS_SECRET_ACCESS_KEY": {
+                                "Fn::GetAtt": ["HostKeys", "SecretAccessKey"]
+                            },
                             "region": {
                                 "Ref": "AWS::Region"
                             },
@@ -622,6 +628,33 @@
                         "CidrIp": "0.0.0.0/0"
                     }
                 ]
+            }
+        },
+        "ElasticBeanStalkUser": {
+            "Type": "AWS::IAM::User",
+            "Properties": {
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "root",
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+          
+                          "Effect": "Allow",
+                                    "Action": "*",
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "HostKeys": {
+            "Type": "AWS::IAM::AccessKey",
+            "Properties": {
+                "UserName": { "Ref": "ElasticBeanStalkUser" }
             }
         },
         "JenkinsLayerLoadBalancerAttachment": {
