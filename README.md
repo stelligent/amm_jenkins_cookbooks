@@ -65,6 +65,12 @@ The Jenkins template also supports two other optional parameters: _repository_ a
 * Click "configure"
 * Punch in your new password in the password fields and click save.
 
+how to Launch the AMM Cloud Deployment Pipeline:
+====
+Once Jenkins is up and you have changed the admin password you will click on "job-seed" and click "build now" on the left.  This will run the groovy script that configures the AMM Cloud Deployment Pipeline and subsequently kick off the deployment of the pipeline.
+
+If successful, AMM will deploy via Cloud Formation and Elastic Beanstalk.
+
 how to update jenkins configuration:
 ====
 
@@ -74,7 +80,7 @@ The templates don't do much templating (only the source control repo URL) so you
 
 questions?
 ====
-If you have any issues, feel free to open an issue or make a pull request. Alternatively, you can reach out on twitter: @jonathansywulak
+If you have any issues, feel free to open an issue or make a pull request.
 
 :books: 
 
