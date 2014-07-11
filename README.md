@@ -1,9 +1,9 @@
-amm_jenkins_cookbooks
+amm_jenkins_CDPipeline
 ======================
 
 **This repository is a work in progress and should not be used at this point**
 
-A collection of cookbooks and configuration used to set up a Jenkins server for the Amazon Media Manager (AMM) application. You can point to this repo with OpsWorks if you want to create a custom Jenkins layer.
+A collection of Ruby scripts, Cloud Formation Template and cookbooks used to set up a Jenkins server for the Amazon Media Manager (AMM) application.
 
 Most of these cookbooks are just copies of open source cookbooks. They were retrieved using berkshelf, since it makes everything way easier. If you need to update the open source cookbooks, it's simple enough; just add the new dependency to Berksfile, and then run these commands:
 
@@ -27,7 +27,7 @@ how to use this repository
 
 This repository is designed to be used as the custom Chef cookbooks repository for a Jenkins stack built using Amazon's OpsWorks service. I suppose you could use it to build a custom Jenkins server without using OpsWorks, but I haven't tried that so if you give it a shot you're on your own. :)
 
-We've designed the infrastructure for Honolulu Answers, as well as the Jenkins server, to be run in a VPC. To that end, we provide a CloudFormation template to set up the VPC.
+We've designed the infrastructure for the Jenkins server to be run in a VPC. A CloudFormation template is provided to set up the VPC.
 
 Also included in the repository is CloudFormation template that will handle building the appropriate IAM roles and OpsWorks stack. To run either template, you have a couple options.
 
