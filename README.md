@@ -3,7 +3,7 @@ Amazon Media Manager Jenkins Cloud Deployment Pipeline
 
 **This repository is a work in progress and should not be used at this point**
 
-This repository is a collection of Ruby scripts, Cloud Formation Templates and cookbooks used to set up a Jenkins server that will be used to deploy and manage the Cloud Deployment Amazon Media Manager (AMM) application Pipeline.
+This repository is a collection of Ruby scripts, Cloud Formation Templates and Chef cookbooks used to set up a Jenkins server that will be used to deploy and manage the Cloud Deployment Amazon Media Manager (AMM) application Pipeline.
 
 Most of these cookbooks are just copies of open source cookbooks. They were retrieved using berkshelf, since it makes everything way easier. If you need to update the open source cookbooks, it's simple enough; just add the new dependency to Berksfile, and then run these commands:
 
@@ -35,12 +35,11 @@ The easier one is probably to clone this repository and run the Ruby script insi
 
 Once both of those are installed, you can run this command to set everything up:
 
-    ``ruby create_vpc_and_jenkins.rb --region aws-region-to-build-in --keyname your-ec2-keypair-name --domain yourdomain.com``
+    ``ruby create_vpc_and_jenkins.rb --region aws-region-to-build-in --keyname your-ec2-keypair-name``
 
 The parameters are:
 
 * **keyname**: the name of an EC2 keypair that exists in that region. It will be linked to the NAT and Bastion host boxes that the VPC template creates.
-* **domain**: The Route 53 hosted zone that Jenkins will manipulate for its Blue/Green deployments. If you don't have a domain set up, you can leave this blank, but the Blue/Green jobs will fail if you try to run them.
 * **region**: The AWS region you want to run everything in. Defaults to US-West-2, Oregon.
 
  Your other option is to run the template manually yourself. You will need the [AWS CLI tool installed and configured](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html). Then, just pull down the repo and run these commands:
