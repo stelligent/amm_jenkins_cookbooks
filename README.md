@@ -1,8 +1,6 @@
 Amazon Media Manager Jenkins Cloud Deployment Pipeline
 ======================
 
-**This repository is a work in progress and should not be used at this point**
-
 This repository is a collection of Ruby scripts, Cloud Formation Templates and Chef cookbooks used to set up a Jenkins server that will be used to deploy and manage the Cloud Deployment Amazon Media Manager (AMM) application Pipeline.
 
 Most of these cookbooks are just copies of open source cookbooks. They were retrieved using berkshelf, since it makes everything way easier. If you need to update the open source cookbooks, it's simple enough; just add the new dependency to Berksfile, and then run these commands:
@@ -73,30 +71,6 @@ how to update jenkins configuration:
 If you've made changes to the Jenkins server configuration, it will not be persisted if the server goes down. If you'd like to commit that configuration to a source control repo, fork this repo and look in the jenkins-configuration cookbook. In there you will find various ERB template files, each full of XML. These are the raw Jenkins configuration files. You can find this XML by configuring the jobs on the Jenkins server, and then changing the URL. The Jenkins job configure URL will end in /jobname/configure; if you go to /jobname/config.xml you'll see the pure XML. 
 
 The templates don't do much templating (only the source control repo URL) so you can just copy the XML and paste it into the template file.
-
-**experimental**: There's a script in the cdri repo which will look at an existing Jenkins server and extract the jobs. To try it, check out the cdri repo and run these commands (assuming you have the cdri and jenkins_chef_cookbooks repos checked out side by side):
-
-    ruby bin/export_jenkins_jobs.rb --server http://jenkinsserver/ --repo https://github.com/stelligent/honolulu_answers.git
-    cp -R /tmp/jenkins-jobs/*.xml.erb ../jenkins_chef_cookbooks/jenkins-configuration/templates/default/
-    cd ../jenkins_chef_cookbooks
-    git status
-    
-If you like what you see, you can commit the changes.
-
-**Note**: The groovy scripts that inject the job configuration will crash and burn if there is any whitespace at the beginning of the file. Make sure that there isn't any whitespace at the beginning of the the XML configuration file. 
-
-how to push a new version of jenkins out to the world
-====
-
-Most of the job knowledge is stored in scripts that are stored in the application repository, but if you create or delete jobs, or make configuration changes to the jobs (...which really shouldn't be necessary!) you may need to push a new Jenkins out to the world.
-
-You have two options: you can manually run the CloudFormation script as detailed above, or there are is a Jenkins job you can run to update the Jenkins server.
-
-The job in question is:
-
-* **create-new-jenkins**: this job will kick off the create-new-jenkins.sh, which should contain a script that runs the cloudformation script. You can probably just steal [the one we wrote for over here.](https://github.com/stelligent/honolulu_answers/blob/master/pipeline/create-new-jenkins.sh)
-
-Then, when you need a new Jenkins, just run the create-new-jenkins job. Once it completes, go into the OpsWorks console to find your new stack, open it up, and then run the become-production-jenkins job on that server and it'll become the new production instance.
 
 questions?
 ====
