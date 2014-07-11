@@ -3,7 +3,7 @@ amm_jenkins_CD_Pipeline
 
 **This repository is a work in progress and should not be used at this point**
 
-A collection of Ruby scripts, Cloud Formation Template and cookbooks used to set up a Jenkins server for the Amazon Media Manager (AMM) application.
+This repository is a collection of Ruby scripts, Cloud Formation Templates and cookbooks used to set up a Jenkins server that will be used to deploy and manage the Cloud Deployment Amazon Media Manager (AMM) application Pipeline.
 
 Most of these cookbooks are just copies of open source cookbooks. They were retrieved using berkshelf, since it makes everything way easier. If you need to update the open source cookbooks, it's simple enough; just add the new dependency to Berksfile, and then run these commands:
 
