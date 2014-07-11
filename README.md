@@ -1,4 +1,4 @@
-amm_jenkins_CD_Pipeline
+Amazon Media Manager Jenkins Cloud Deployment Pipeline
 ======================
 
 **This repository is a work in progress and should not be used at this point**
